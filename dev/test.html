@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="js/lib/lib.js"></script>
+    <script src="js/global.js"></script>
+</head>
+<body>
+    我是测试页面
+
+    <input type="text" value="nihap"><a id="copy" href="javascript:;">复制</a>
+    <script>
+require(['copy','tpl/test'],function(){
+
+    function copyinit(txt,_id) {
+        var _Swfcopy = new ZeroClipboard.Client();
+
+        console.log(_Swfcopy)
+        _Swfcopy.setHandCursor(true);
+        
+        _Swfcopy.addEventListener('mouseOver', function (client) {
+            _Swfcopy.setText(txt);
+        });
+        
+        _Swfcopy.addEventListener('complete', function (client, text) {
+            alert("复制成功，马上使用优惠券吧!");
+        });
+        setTimeout(function(){
+            _Swfcopy.glue(_id);
+        }, 300);
+    }
+
+    copyinit('复制aaaaa','copy');
+})
+    </script>
+</body>
+</html>
